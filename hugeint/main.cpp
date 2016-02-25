@@ -10,7 +10,7 @@ int main()
 	hugeint a(b), c(z), d;
 	std::cout<<std::endl;
 
-	std::cout<<(a == z);
+	std::cout<<a<<" "<<c<<std::endl;
 	//a.show();
 	system("PAUSE");
 	return 0;

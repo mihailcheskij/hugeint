@@ -26,7 +26,7 @@ public:
 	void operator=(const LL& a); //huge = число;
 	bool operator==(const LL& a) const; //huge == число
 
-
+	friend std::ostream& operator<<(std::ostream& os, const hugeint& a);// вывод с использованием cout или в файл через <fstream>
 	int size() const;
 	void show() const;
 };

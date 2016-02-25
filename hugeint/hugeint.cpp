@@ -136,3 +136,12 @@ bool hugeint::operator==(const LL & a) const
 	hugeint temp(a);
 	return *this == temp;
 };
+
+std::ostream& operator<<(std::ostream& os, const hugeint& a)
+{
+	for(int i=0; i<a.huge.size(); i++)
+	{
+		os<<a.huge[i];
+	}
+	return os;
+};

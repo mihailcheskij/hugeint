@@ -1,20 +1,10 @@
-﻿Build started 25.02.2016 8:00:24.
-     1>Project "E:\hugeint\hugeint\hugeint.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Visual Studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt hugeint.cpp main.cpp
-         main.cpp
-         hugeint.cpp
-     1>e:\hugeint\hugeint\hugeint.cpp(13): warning C4018: '<': signed/unsigned mismatch
-     1>e:\hugeint\hugeint\hugeint.cpp(18): warning C4018: '>=': signed/unsigned mismatch
-     1>e:\hugeint\hugeint\hugeint.cpp(23): warning C4018: '<': signed/unsigned mismatch
-     1>e:\hugeint\hugeint\hugeint.cpp(54): warning C4018: '<': signed/unsigned mismatch
-         Generating Code...
-       Link:
-         D:\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\hugeint\Debug\hugeint.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\hugeint\Debug\hugeint.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\hugeint\Debug\hugeint.lib" /MACHINE:X86 Debug\hugeint.obj
-         Debug\main.obj
-         hugeint.vcxproj -> E:\hugeint\Debug\hugeint.exe
-     1>Done Building Project "E:\hugeint\hugeint\hugeint.vcxproj" (Build target(s)).
+﻿Построение начато 25/02/2016 21:46:20.
+     1>Проект "F:\git\hugeint\hugeint\hugeint.vcxproj" в узле 2 (целевые объекты Build).
+       Файл проекта содержит ToolsVersion="14.0". Данный набор инструментов является неизвестным или отсутствует. Для устранения этой ошибки можно установить для данного набора инструментов соответствующую версию .NET Framework. Считается, что проект содержит ToolsVersion="4.0".
+     1>Link:
+         hugeint.vcxproj -> F:\git\hugeint\Debug\hugeint.exe
+     1>Построение проекта "F:\git\hugeint\hugeint\hugeint.vcxproj" завершено (целевые объекты Build).
 
-Build succeeded.
+Построение успешно завершено.
 
-Time Elapsed 00:00:09.61
+Затраченное время: 00:00:00.04
