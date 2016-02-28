@@ -57,25 +57,26 @@ void hugeint::show() const
 	}
 };
 
-hugeint hugeint::operator+(hugeint a) const
+hugeint hugeint::operator+(const hugeint& a) const
 {
-	hugeint res;
+	hugeint res, a1;
+	a1 = a;
 	res.huge.erase(res.huge.begin());
 	short ost=0;
-	if(this->size()<a.size())
+	if(this->size()<a1.size())
 	{
-		return a + *this;
+		return a1 + *this;
 	}
 	else{
-		while(a.size()<this->size())
+		while(a1.size()<this->size())
 		{
-			a.huge.insert(a.huge.begin(), 0);
+			a1.huge.insert(a1.huge.begin(), 0);
 		};
 
 		for (int i = this->size() - 1; i >= 0; i--)
 		{
-			res.huge.insert(res.huge.begin(), ((this->huge[i] + a.huge[i] + ost)%10));
-			ost = (this->huge[i] + a.huge[i] + ost)/10;
+			res.huge.insert(res.huge.begin(), ((this->huge[i] + a1.huge[i] + ost)%10));
+			ost = (this->huge[i] + a1.huge[i] + ost)/10;
 		};
 		
 		if(ost!=0)
@@ -113,7 +114,7 @@ bool hugeint::operator==(const hugeint& a) const
 	return true;
 };
 
-hugeint hugeint::operator+(LL a) const
+hugeint hugeint::operator+(const LL& a) const
 {
 	hugeint temp(a);
 	return *this + temp;
@@ -135,6 +136,11 @@ bool hugeint::operator==(const LL & a) const
 {
 	hugeint temp(a);
 	return *this == temp;
+};
+
+hugeint operator+(LL a, hugeint b)
+{
+	return b + a;
 };
 
 std::ostream& operator<<(std::ostream& os, const hugeint& a)
