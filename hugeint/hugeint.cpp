@@ -114,31 +114,43 @@ bool hugeint::operator==(const hugeint& a) const
 	return true;
 };
 
-hugeint hugeint::operator+(const LL& a) const
+bool operator>(const hugeint & a, const hugeint& b)
 {
-	hugeint temp(a);
-	return *this + temp;
-};
+	if (a.size() > b.size())
+	{
+		return true;
+	}
+	if (a.size() < b.size())
+	{
+		return false;
+	}
 
-void hugeint::operator+=(const LL& a)
+	for (int i = 0; i < a.size(); i++)
+	{
+		if (a.huge[i] > b.huge[i])
+		{
+			return true;
+		}
+		if (a.huge[i] < b.huge[i])
+		{
+			return false;
+		}
+	}
+
+	return false;
+}
+
+bool hugeint::operator>=(const hugeint & a) const
 {
-	hugeint temp(a);
-	*this = *this + temp;
-};
+	if (*this == a)
+	{
+		return true;
+	}
+	
+	return (*this > a);
+}
 
-void hugeint::operator=(const LL & a)
-{
-	hugeint temp(a);
-	*this = temp;
-};
-
-bool hugeint::operator==(const LL & a) const
-{
-	hugeint temp(a);
-	return *this == temp;
-};
-
-hugeint operator+(LL a, hugeint b)
+hugeint operator+(const LL& a, const hugeint& b)
 {
 	return b + a;
 };

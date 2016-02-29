@@ -8,8 +8,10 @@ int main()
 	int z;
 	std::cin>>b>>z;
 	hugeint a(b), c(z), d;
-	std::cout<<std::endl<<z+a;
-
+	
+	
+	std::cout << (a >= c);
+	
 	//a.show();
 	system("PAUSE");
 	return 0;
