@@ -3,36 +3,43 @@
 
 #include <vector>
 #include <string>
+#include <cstdlib> //для использования exit() в случае ошибочных данных
+#include <limits> //константы максимальных значений тпов, для (число = hugeint)
 
 typedef unsigned long long LL;
 
 class hugeint{
 private:
 	std::vector<unsigned short> huge;
+	void getPoint(const LL& a);
+	void delZero();
 public:
 	hugeint();
 	hugeint(std::string s);
 	hugeint(LL num); //для чисел <= 2^64
 	~hugeint();
-	// перегрузка операторов для случая, когда оба операнда hugeint
+	// перегрузка операторов для случая, когда оба операнда hugeint, или второй - число
 	hugeint operator+(const hugeint& a) const; // сложение 2х длинных чисел
 	void operator+=(const hugeint& a); //huge += huge;
+	hugeint operator-(const hugeint& a) const; // huge - huge
+	void operator-=(const hugeint& a); //huge -= huge;
+
 	void operator=(const hugeint& a); //huge = huge;
 	bool operator==(const hugeint& a) const; //huge == huge
 
-	//перегрузка операторов для случая, когда первый операнд hugeint, а второй - число
-	hugeint operator+(const LL& a) const; // huge + число
-	void operator+=(const LL& a); //huge += число;
-	void operator=(const LL& a); //huge = число;
-	bool operator==(const LL& a) const; //huge == число
+	friend bool operator>(const hugeint& a, const hugeint& b); //операции сравнения
+	bool operator>=(const hugeint& a) const;
+	bool operator<(const hugeint& a)const;
+	bool operator<=(const hugeint& a)const;
 
 	//перегрузка операторов для случая, когда первый операнд число, а второй - hugeint
-	friend hugeint operator+(LL a, hugeint b); // число + huge
+	friend hugeint operator+(const LL& a, const hugeint& b); // число + huge
+	friend hugeint operator-(const LL& a, const hugeint& b); // ДОДЕЛАТЬ
+	friend void operator=(LL& a, const hugeint& b);
 
 	friend std::ostream& operator<<(std::ostream& os, const hugeint& a);// вывод с использованием cout или в файл через <fstream>
 	int size() const;
 	void show() const;
-};
-
+};		
 
 #endif
