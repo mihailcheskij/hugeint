@@ -2,6 +2,24 @@
 #include <string>
 #include <iostream>
 
+void hugeint::getPoint(const LL & a)
+{
+	if (huge[a - 1] == 0)
+	{
+		this->getPoint(a - 1);
+	}
+	huge[a - 1] -= 1;
+	huge[a] += 10;	
+};
+
+void hugeint::delZero()
+{
+	while (this->huge[0] == 0)
+	{
+		this->huge.erase(this->huge.begin());
+	}
+}
+
 hugeint::hugeint()
 {
 	huge.push_back(0);
@@ -97,6 +115,53 @@ void hugeint::operator+=(const hugeint & a)
 	*this = *this + a;
 };
 
+hugeint hugeint::operator-(const hugeint & a) const
+{
+	if (*this < a)
+	{
+		std::cout << "Error 101: hugeint can't contains negative value" << std::endl;
+		system("PAUSE");
+		exit(101);
+	}
+
+	hugeint a1 = a, 
+			this1 = *this,
+			res;
+	res.huge.erase(res.huge.begin());
+	int temp;
+
+	if (a1.size() < this1.size()) 
+	{
+		while (a1.size()<this1.size())
+		{
+			a1.huge.insert(a1.huge.begin(), 0);
+		};
+	}
+
+	for (int i = a1.size() - 1; i >= 0; i--)
+	{	
+		if (this1.huge[i] < a1.huge[i])
+		{
+			this1.getPoint(i);
+			if (this1.huge[0] == 0)
+			{
+				this1.huge.erase(this1.huge.begin());
+				a1.huge.erase(a1.huge.begin());
+				i--;
+			}
+		}
+		temp = this1.huge[i] - a1.huge[i];
+		res.huge.insert(res.huge.begin(), temp);
+	}
+	res.delZero();
+	return res;
+}
+void hugeint::operator-=(const hugeint & a)
+{
+	*this = *this - a;
+};
+
+
 bool hugeint::operator==(const hugeint& a) const
 {
 	if(this->size() != a.size())
@@ -150,10 +215,37 @@ bool hugeint::operator>=(const hugeint & a) const
 	return (*this > a);
 }
 
+bool hugeint::operator<(const hugeint & a) const
+{
+	if (*this == a)
+	{
+		return false;
+	}
+	return !(*this>a);
+}
+
+bool hugeint::operator<=(const hugeint & a) const
+{
+	if (*this == a)
+	{
+		return true;
+	}
+	return (*this < a);
+}
+
 hugeint operator+(const LL& a, const hugeint& b)
 {
 	return b + a;
 };
+
+hugeint operator-(const LL & a, const hugeint & b)
+{
+	return (hugeint(a) - b);
+};
+
+//void operator=(LL & a, const hugeint & b)
+//{
+//};
 
 std::ostream& operator<<(std::ostream& os, const hugeint& a)
 {

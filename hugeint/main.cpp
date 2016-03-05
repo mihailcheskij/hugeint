@@ -5,12 +5,12 @@
 int main()
 {
 	std::string b,b1;
-	int z;
+	std::string z;
 	std::cin>>b>>z;
 	hugeint a(b), c(z), d;
 	
-	
-	std::cout << (a >= c);
+	a -= c;
+	std::cout << a;
 	
 	//a.show();
 	system("PAUSE");
