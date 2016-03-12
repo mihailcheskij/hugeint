@@ -18,7 +18,24 @@ void hugeint::delZero()
 	{
 		this->huge.erase(this->huge.begin());
 	}
-}
+};
+
+LL hugeint::toInt()
+{
+	if(*this >= ULLONG_MAX)
+	{
+		std::cout << "Error 102: the value is too big to contains in ULL" << std::endl;
+		system("PAUSE");
+		exit(102);
+	}
+	LL res = 0;
+	for(int i = 0; i < this->size(); i++)
+	{
+		res *= 10; 
+		res += this->huge[i];
+	};
+	return res;
+};
 
 hugeint::hugeint()
 {
@@ -243,9 +260,11 @@ hugeint operator-(const LL & a, const hugeint & b)
 	return (hugeint(a) - b);
 };
 
-//void operator=(LL & a, const hugeint & b)
-//{
-//};
+void operator+=(LL& a, const hugeint& b)
+{
+	hugeint temp = b + a;
+	a = temp.toInt();
+}
 
 std::ostream& operator<<(std::ostream& os, const hugeint& a)
 {

@@ -5,13 +5,12 @@
 int main()
 {
 	std::string b,b1;
-	std::string z;
-	std::cin>>b>>z;
-	hugeint a(b), c(z), d;
+	LL z=0;
+	std::cin>>b;
+	hugeint a(b), c, d;
 	
-	a -= c;
-	std::cout << a;
-	
+	z+=a;
+	std::cout<<z;
 	//a.show();
 	system("PAUSE");
 	return 0;

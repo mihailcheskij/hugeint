@@ -13,6 +13,7 @@ private:
 	std::vector<unsigned short> huge;
 	void getPoint(const LL& a);
 	void delZero();
+	LL toInt();
 public:
 	hugeint();
 	hugeint(std::string s);
@@ -32,10 +33,11 @@ public:
 	bool operator<(const hugeint& a)const;
 	bool operator<=(const hugeint& a)const;
 
-	//перегрузка операторов дл€ случа€, когда первый операнд число, а второй - hugeint
+	//перегрузка операторов дл€ случа€, когда первый операнд число, а второй - hugeint 
+	//P.S. возвращают hugeint (кроме "op"=, например +=)
 	friend hugeint operator+(const LL& a, const hugeint& b); // число + huge
-	friend hugeint operator-(const LL& a, const hugeint& b); // ƒќƒ≈Ћј“№
-	friend void operator=(LL& a, const hugeint& b);
+	friend hugeint operator-(const LL& a, const hugeint& b); // число - huge
+	friend void operator+=(LL& a, const hugeint& b);
 
 	friend std::ostream& operator<<(std::ostream& os, const hugeint& a);// вывод с использованием cout или в файл через <fstream>
 	int size() const;
